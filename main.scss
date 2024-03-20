@@ -1,1 +1,111 @@
+$text-color-main: #2F4F4F;
+$text-color-number: #8B0000;
+$card-bg-color: #EEEEEE;
+$person-width: 220px;
+
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.people {
+  --columns: 2;
+  display: grid;
+  grid-template-columns: repeat(var(--columns), $person-width);
+  column-gap: 10px;
+  justify-content: center;
+
+  @media (min-width: 1000px) {
+    --columns: 4;
+  }
+
+}
+
+.person {
+  box-sizing: border-box;
+  padding: 10px 10px 16px;
+  width: $person-width;
+  text-align: center;
+
+  transition: transform 1s;
+
+
+  &:hover {
+    background-color: $card-bg-color;
+    transform: scale(1.2);
+    z-index: 1;
+    border-radius: 12px;
+  
+    & .photo img {
+      border-radius: 60px;
+    }
+
+    & .extra {
+      // display: block;
+      // position: absolute;
+      visibility: inherit;
+      
+    }
+  }
+}
+
+.photo {
+  position: relative;
+  &>img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+
+    transition: border-radius 1s;
+  }
+}
+
+.rank {
+  position: absolute;
+  top: 94px;
+  right: 10px;
+
+  height: 32px;
+  width: 32px;
+  border-radius: 50%;
+  background-color: #fff;
+
+  text-align: center;
+  font-size: 16px;
+  line-height: 32px;
+  color: $text-color-number;
+}
+
+.name {
+  font-size: 20px;
+  line-height: 23px;
+  color: $text-color-main;
+}
+
+.extra {
+  // display: none;
+  visibility: hidden;
+  margin-top: 10px;
+}
+
+.sport {
+  &::after {
+    content: ",";
+    font-family: inherit;
+  }
+}
+
+.pay {
+  &::before {
+    content: "$";
+    font-family: inherit;
+  }
+
+  &::after {
+    content: "M";
+    font-family: inherit;
+  }
+}
+
+
 
